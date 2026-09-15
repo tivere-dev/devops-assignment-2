@@ -1,0 +1,16 @@
+# Local development with Docker Compose.
+#
+#   docker compose build
+#   docker compose run --rm diagnostic system
+#   docker compose run --rm diagnostic network example.com
+#   docker compose run --rm diagnostic disk
+#
+# The service is a one-shot CLI, so it is meant to be started with `run`,
+# not `up`. Without arguments it prints the help text.
+services:
+  diagnostic:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: diagnostic-tool:latest
+    command: ["help"]

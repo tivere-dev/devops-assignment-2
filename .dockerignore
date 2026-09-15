@@ -1,0 +1,21 @@
+# Version control
+.git
+.gitignore
+.gitattributes
+
+# Logs and temporary/local files
+logs
+*.log
+tmp
+*.tmp
+*.swp
+*~
+.DS_Store
+.vscode
+.idea
+
+# Not needed inside the image (only app/ is copied, but keep the context small)
+README.md
+test.sh
+grade.sh
+compose.yaml
