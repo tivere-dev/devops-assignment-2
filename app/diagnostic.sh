@@ -194,6 +194,15 @@ cmd_disk() {
 valid_host() {
     local host="$1"
     [[ ${#host} -le 253 ]] || return 1
+    # All digits and dots: must be a dotted-quad IPv4 address with octets 0-255.
+    if [[ "$host" =~ ^[0-9.]+$ ]]; then
+        [[ "$host" =~ ^([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})$ ]] || return 1
+        local octet
+        for octet in "${BASH_REMATCH[@]:1}"; do
+            (( 10#$octet <= 255 )) || return 1
+        done
+        return 0
+    fi
     [[ "$host" =~ ^[A-Za-z0-9]([A-Za-z0-9.-]*[A-Za-z0-9])?$ ]] && return 0
     [[ "$host" =~ ^[0-9A-Fa-f:]+$ && "$host" == *:* ]] && return 0
     return 1

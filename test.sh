@@ -132,6 +132,7 @@ expect_output "disk shows a usage percentage" '[0-9]+%'
 # network
 expect_exit "network without host is invalid input" 2 network
 expect_exit "network rejects malformed host" 2 network "bad host!"
+expect_exit "network rejects out-of-range IPv4 address" 2 network 999.1.1.1
 expect_exit "network rejects port 0" 2 network localhost 0
 expect_exit "network rejects port 65536" 2 network localhost 65536
 expect_exit "network rejects non-numeric port" 2 network localhost abc
