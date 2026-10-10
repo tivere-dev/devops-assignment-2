@@ -110,7 +110,7 @@ exit 1
 |------|---------|----------|
 | 0 | Success | `system`, `disk`, `help`, `network host` when the host is reachable |
 | 1 | Operational/runtime failure | host cannot be resolved, ping fails, TCP port closed, `df` fails |
-| 2 | Invalid command or input | no command, unknown command, `network` without a host, malformed host, port outside 1–65535, extra arguments |
+| 2 | Invalid command or input | no command, unknown command, `network` without a host, malformed host or out-of-range IPv4 address, port outside 1–65535, extra arguments |
 
 Invalid input always prints an error and the usage text to stderr.
 
